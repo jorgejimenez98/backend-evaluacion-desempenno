@@ -27,7 +27,7 @@ Notar que `(nombre-env)` delante del comando indica solamente que la terminal ti
 Una vez que se hallan instalado las dependencias haz lo siguiente:
 ```sh
 (nombre-env)$ cd backend
-(nombre-env)$ python manage.py runserver 5000
+(nombre-env)$ python manage.py runserver
 ```
 Y navega a la url `http://127.0.0.1:8000/api/` en caso de que quieras consultar la api del sistema
   
