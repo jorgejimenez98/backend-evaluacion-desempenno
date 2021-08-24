@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dd336a63-87e2-491a-948d-b370e289008a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/appsUrls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/evaluation/serializers/anualSerializer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/evaluation/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/evaluation/viewSets/anualEvaluationViewSet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/evaluation/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/family/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/family/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/family/viewSet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/hotel/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/hotel/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/payTime/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/payTime/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/salesPlan/x.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/sellArea/serializer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/sellArea/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/users/serializers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/users/serializers/permissionSerializer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/users/serializers/userSerializer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/users/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/users/viewSets/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/users/viewSets/permissionViewSet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/users/viewSets/userViewSet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/extraPermissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1sQ3wB7TSO02KihPj8EZTZbfUm2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="ignore.virus.scanning.warn.message" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager" selected="Python.x (2)">
+    <configuration name="monthlyGastronomyEvaluationViewSet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/apps/evaluation/viewSets" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/apps/evaluation/viewSets/monthlyGastronomyEvaluationViewSet.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="x (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/apps/salesPlan" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/apps/salesPlan/x.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="x (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/apps/evaluation/viewSets" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/apps/evaluation/viewSets/x.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="x" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/x.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="backend" type="Python.DjangoServer" factoryName="Django server">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.x (2)" />
+        <item itemvalue="Python.monthlyGastronomyEvaluationViewSet" />
+        <item itemvalue="Python.x (1)" />
+        <item itemvalue="Python.x" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dd336a63-87e2-491a-948d-b370e289008a" name="Default Changelist" comment="" />
+      <created>1620791222029</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1620791222029</updated>
+      <workItem from="1620791224492" duration="7436000" />
+      <workItem from="1621005110982" duration="36000" />
+      <workItem from="1621134088108" duration="1934000" />
+      <workItem from="1621308169995" duration="2184000" />
+      <workItem from="1621402938485" duration="1815000" />
+      <workItem from="1621480825499" duration="4756000" />
+      <workItem from="1621574376476" duration="1864000" />
+      <workItem from="1621578502424" duration="7149000" />
+      <workItem from="1621620495327" duration="792000" />
+      <workItem from="1621631708833" duration="2623000" />
+      <workItem from="1621908238786" duration="521000" />
+      <workItem from="1621920880643" duration="1764000" />
+      <workItem from="1621925504536" duration="9055000" />
+      <workItem from="1622175140453" duration="81000" />
+      <workItem from="1624314701254" duration="37520000" />
+      <workItem from="1624483154667" duration="1105000" />
+      <workItem from="1624484289103" duration="36740000" />
+      <workItem from="1624923518951" duration="618000" />
+      <workItem from="1624973007934" duration="16545000" />
+      <workItem from="1625066752487" duration="815000" />
+      <workItem from="1625084904675" duration="24940000" />
+      <workItem from="1625338236206" duration="609000" />
+      <workItem from="1625340669112" duration="1646000" />
+      <workItem from="1625601383971" duration="10225000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1624410184275">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1624410184275" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1625340949169">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1625340949169" />
+    <state width="1493" height="190" key="GridCell.Tab.0.bottom" timestamp="1625781216172">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="190" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1625781216172" />
+    <state width="1493" height="190" key="GridCell.Tab.0.center" timestamp="1625781216172">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="190" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1625781216172" />
+    <state width="1493" height="190" key="GridCell.Tab.0.left" timestamp="1625781216172">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="190" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1625781216172" />
+    <state width="1493" height="190" key="GridCell.Tab.0.right" timestamp="1625781216172">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="190" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1625781216172" />
+    <state x="479" y="129" width="577" height="566" key="find.popup" timestamp="1624973538179">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="479" y="129" width="577" height="566" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1624973538179" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1625771571742">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1625771571742" />
+    <state x="234" y="149" key="vcs.ApplyPatchDifferentiatedDialog" timestamp="1625263866318">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="234" y="149" key="vcs.ApplyPatchDifferentiatedDialog/0.0.1536.824@0.0.1536.824" timestamp="1625263866318" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/backend$x.coverage" NAME="x Coverage Results" MODIFIED="1624315312844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/backend$x__1_.coverage" NAME="x (1) Coverage Results" MODIFIED="1625263656383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/salesPlan" />
+    <SUITE FILE_PATH="coverage/backend$x__2_.coverage" NAME="x (2) Coverage Results" MODIFIED="1625605862172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/evaluation/viewSets" />
+    <SUITE FILE_PATH="coverage/backend$monthlyGastronomyEvaluationViewSet.coverage" NAME="monthlyGastronomyEvaluationViewSet Coverage Results" MODIFIED="1625605431317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/evaluation/viewSets" />
+  </component>
+</project>
