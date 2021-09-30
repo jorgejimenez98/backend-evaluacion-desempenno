@@ -13,6 +13,7 @@ from apps.charge.urls import router as chargeRouters
 from apps.salesPlan.urls import router as salesPlansRouters
 from apps.payTime.urls import router as payTimeRouters
 from apps.evaluation.urls import router as evaluationRouter
+from .dashboardViews import views as dashViews
 
 
 class DefaulRouter(routers.DefaultRouter):
@@ -38,6 +39,7 @@ urlpatterns = [
     path('', include('apps.users.urls')),
     path('', include('apps.hotel.urls')),
     path('', include('apps.evaluation.urls')),
+    path('getMainNumbers/', dashViews.getMainNumbers),
     # Django Rest Framework Urls
     path('', include(router.urls)),
 ]
