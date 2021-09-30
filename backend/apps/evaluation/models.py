@@ -44,6 +44,8 @@ class MonthlyMeliaEvaluation(MonthlyEvaluation):
         calificaciones = self.getCalifications()
         totalPoints = sum(calificaciones)
         evaluacion = ''
+        if totalPoints <= 14:
+            evaluacion = 'M'
         if 14 < totalPoints <= 20:
             evaluacion = 'M'
         elif 20 < totalPoints <= 27:

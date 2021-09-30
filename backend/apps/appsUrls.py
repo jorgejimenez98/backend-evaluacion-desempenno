@@ -39,7 +39,10 @@ urlpatterns = [
     path('', include('apps.users.urls')),
     path('', include('apps.hotel.urls')),
     path('', include('apps.evaluation.urls')),
+    # DashBoard URLS and Views
     path('getMainNumbers/', dashViews.getMainNumbers),
+    path('getRangeOfMelyaEvaluations/', dashViews.getRangeOfMelyaEvaluations),
+    path('getRangeOfAnualEvaluations/', dashViews.getRangeOfAnualEvaluations),
     # Django Rest Framework Urls
     path('', include(router.urls)),
 ]
