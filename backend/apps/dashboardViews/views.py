@@ -7,7 +7,6 @@ from ..evaluation.models import MonthlyMeliaEvaluation, AnualEvaluation
 from ..salesPlan.models import MonthlySalePlan
 from ..family.models import Family
 from ..sellArea.models import PuntoDeVenta
-import json
 
 
 @api_view(['GET'])
@@ -20,7 +19,7 @@ def getMainNumbers(request):
             'families': Family.objects.filter(activo=True).count(),
             'salePlaces': PuntoDeVenta.objects.filter(activo=True).count(),
         }
-        return Response({'data', json.dumps(response)}, status=status.HTTP_200_OK)
+        return Response(response, status=status.HTTP_200_OK)
     except Exception as e:
         return Response({'detail': e.args[0]}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -39,8 +38,7 @@ def getRangeOfMelyaEvaluations(request):
                 response['regular'] += 1
             elif evaluation.totalCalificacion().split('-')[1].lstrip() == 'M':
                 response['bad'] += 1
-        response = list(response.values())
-        return Response({'data', json.dumps(response)}, status=status.HTTP_200_OK)
+        return Response(response, status=status.HTTP_200_OK)
     except Exception as e:
         return Response({'detail': e.args[0]}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -57,7 +55,6 @@ def getRangeOfAnualEvaluations(request):
                 response['good'] += 1
             elif evaluation.finalEvaluation == 'Deficiente':
                 response['bad'] += 1
-        response = list(response.values())
-        return Response({'data', json.dumps(response)}, status=status.HTTP_200_OK)
+        return Response(response, status=status.HTTP_200_OK)
     except Exception as e:
         return Response({'detail': e.args[0]}, status=status.HTTP_400_BAD_REQUEST)
