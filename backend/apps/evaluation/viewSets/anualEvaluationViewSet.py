@@ -9,6 +9,8 @@ from ..serializers.anualSerializer import AnualEvaluation, AnualEvaluationSerial
 from ...hotel.models import Hotel
 from ...workers.models import Worker
 
+from backend.utils import getNoWorkersForEvaluationError
+
 
 def getAnualEvaluationId(worker_id: str, year: int) -> AnualEvaluation or None:
     if AnualEvaluation.objects.filter(evaluateWorker__no_interno=worker_id, year=year).exists():
@@ -39,6 +41,8 @@ class AnualEvaluationViewSet(viewsets.ModelViewSet):
                     'evaluated': 'No Evaluado' if evId is None else AnualEvaluation.objects.get(id=evId).finalEvaluation
                 }
                 listToReturn.append(item)
+            if len(listToReturn) == 0:
+                raise Exception(getNoWorkersForEvaluationError())
             return Response(listToReturn, status=HTTP_200_OK)
         except Exception as e:
             return Response({'detail': e.args[0]}, status=HTTP_400_BAD_REQUEST)
@@ -68,7 +72,8 @@ class AnualEvaluationViewSet(viewsets.ModelViewSet):
     def editEvaluation(self, request):
         data = request.data
         try:
-            evaluation = AnualEvaluation.objects.get(pk=int(data.get('evaluationId')))
+            evaluation = AnualEvaluation.objects.get(
+                pk=int(data.get('evaluationId')))
             worker = Worker.objects.get(no_interno=data.get('workerId'))
             values = data.get('values')
             evaluation.year = int(data.get('year'))
