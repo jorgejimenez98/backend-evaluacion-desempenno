@@ -14,7 +14,7 @@ def swap(data, i, j):
 
 def insertion_sort(data):
     [swap(data, j, j - 1) for i in range(0, len(data)) for j in range(i, 0, -1) if not
-    less(data[j]['total'], data[j - 1]['total'])]
+     less(data[j]['total'], data[j - 1]['total'])]
 
 
 def getDateByStrig(date):
@@ -90,3 +90,8 @@ def getCategoryNoExistError() -> str:
     return 'Ha ocurrido un error al reconstruir la lista de los Cargos de Trabajadores, recuerde que los cargos ' \
            'dependen de las categorías ocupacionales, por favor, asegurese de tener sincronizadas todas las ' \
            'Categorías Ocupacionales del ZunPr '
+
+
+def getNoWorkersForEvaluationError() -> str:
+    return 'Ha ocurrido un error al construir la lista de las evaluaciones anuales, recuerde que para realizar ' \
+           'la evaluación del desempeño debe tener importados desde el ZUNPR los trabajadores del hotel. Impórtelos por favor. ' \
