@@ -10,6 +10,7 @@ from .serializers import Worker, WorkerSerializer
 from ..hotel.models import Hotel
 from ..charge.models import OccupationalCategory, Charge
 from .models import Operador
+from backend.utils import getNeedCatForWorkerError, getNeedCharForWorkerError
 
 
 class WorkerViewSet(viewsets.ModelViewSet):
@@ -20,9 +21,15 @@ class WorkerViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['POST'])
     def getWorkersByHotel(self, request):
         try:
-            hotel = Hotel.objects.get(pk=int(request.data))
-            serializer = WorkerSerializer(hotel.workers.filter(activo=True).order_by('nombre'), many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            if OccupationalCategory.objects.all().count() == 0:
+                raise Exception(getNeedCatForWorkerError())
+            elif Charge.objects.all().count() == 0:
+                raise Exception(getNeedCharForWorkerError())
+            else:
+                hotel = Hotel.objects.get(pk=int(request.data))
+                hotels = hotel.workers.filter(activo=True).order_by('nombre')
+                serializer = WorkerSerializer(hotels, many=True)
+                return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({'detail': e.args[0]}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -134,6 +141,12 @@ class WorkerViewSet(viewsets.ModelViewSet):
                         unidad_org=hotel
                     )
             return Response({'Workers Imported Successfully'}, status=status.HTTP_200_OK)
+        except OccupationalCategory.DoesNotExist:
+            message = getNeedCatForWorkerError()
+            return Response({'detail': message}, status=status.HTTP_400_BAD_REQUEST)
+        except Charge.DoesNotExist:
+            message = getNeedCharForWorkerError()
+            return Response({'detail': message}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({'detail': e.args[0]}, status=status.HTTP_400_BAD_REQUEST)
 
