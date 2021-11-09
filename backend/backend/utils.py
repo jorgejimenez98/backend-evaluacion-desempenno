@@ -95,3 +95,16 @@ def getCategoryNoExistError() -> str:
 def getNoWorkersForEvaluationError() -> str:
     return 'Ha ocurrido un error al construir la lista de las evaluaciones anuales, recuerde que para realizar ' \
            'la evaluación del desempeño debe tener importados desde el ZUNPR los trabajadores del hotel. Impórtelos por favor. ' \
+
+
+
+def getNeedCatForWorkerError() -> str:
+    return f'Ha ocurrido un error. Asegúrese de que todas las Categorías Ocupacionales estén sincronizadas desde el ZUN'
+
+
+def getNeedCharForWorkerError() -> str:
+    return f'Ha ocurrido un error. Asegúrese de que todas los Cargos Laborales estén sincronizados desde el ZUN'
+
+
+def getNoPaytimesList() -> str:
+    return f'Ha ocurrido un error. Asegúrese de que tener importados los Períodos de Pago desde el ZUN'
