@@ -4,13 +4,21 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from .serializers import PayTime, PayTimeSerializer
 from backend.extraPermissions import IsFoodAndDrinkBoss
-from backend.utils import getDateByStrig
+from backend.utils import getDateByStrig, getNoPaytimesList
 
 
 class PayTimeViewSet(viewsets.ModelViewSet):
     queryset = PayTime.objects.filter(isEliminated=False).order_by('-year', '-monthOrder')
     serializer_class = PayTimeSerializer
     permission_classes = [IsAuthenticated, IsFoodAndDrinkBoss]
+
+    def list(self, request):
+        allowEmptyTable = request.query_params.get('allow')
+        queryset = PayTime.objects.all()
+        if allowEmptyTable is None and queryset.count() == 0:
+            return Response({"detail": getNoPaytimesList()}, status=status.HTTP_400_BAD_REQUEST)
+        serializer = PayTimeSerializer(queryset, many=True)
+        return Response(serializer.data)
 
     @action(detail=False, methods=['POST'])
     def deleteSelectedItems(self, request):
