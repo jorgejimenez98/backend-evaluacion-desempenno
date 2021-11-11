@@ -16,7 +16,8 @@ class WorkerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Worker
-        fields = ['no_interno', 'nombreCompleto', 'cat_ocup', 'cargo', 'activo', 'hotel', 'operador']
+        fields = ['no_interno', 'nombreCompleto', 'cat_ocup',
+                  'cargo', 'activo', 'hotel', 'operador', 'apell1', 'apell2']
 
     def get_cat_ocup(self, obj):
         return obj.cat_ocup.descripcion.title()
