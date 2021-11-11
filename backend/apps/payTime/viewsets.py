@@ -14,7 +14,7 @@ class PayTimeViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         allowEmptyTable = request.query_params.get('allow')
-        queryset = PayTime.objects.all()
+        queryset = PayTime.objects.filter(isEliminated=False).order_by('-year', '-monthOrder')
         if allowEmptyTable is None and queryset.count() == 0:
             return Response({"detail": getNoPaytimesList()}, status=status.HTTP_400_BAD_REQUEST)
         serializer = PayTimeSerializer(queryset, many=True)
