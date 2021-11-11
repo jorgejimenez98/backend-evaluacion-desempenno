@@ -104,6 +104,7 @@ class WorkerViewSet(viewsets.ModelViewSet):
                 else:
                     myWorker.nombre = worker['nombre']
                     myWorker.apell1 = worker['apell1']
+                    myWorker.apell2 = worker['apell2']
                     myWorker.cat_ocup = OccupationalCategory.objects.get(id_categ=worker['cat_ocup']['id_categ'])
                     myWorker.cargo = Charge.objects.get(id_cargos=worker['cargo']['id_cargos'])
                     myWorker.activo = True
