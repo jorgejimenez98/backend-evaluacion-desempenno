@@ -43,6 +43,7 @@ urlpatterns = [
     path('getMainNumbers/', dashViews.getMainNumbers),
     path('getRangeOfMelyaEvaluations/', dashViews.getRangeOfMelyaEvaluations),
     path('getRangeOfAnualEvaluations/', dashViews.getRangeOfAnualEvaluations),
+    path('getTableEvaluations/', dashViews.getTableEvaluations),
     # Django Rest Framework Urls
     path('', include(router.urls)),
 ]
