@@ -11,7 +11,7 @@ from ..sellArea.models import PuntoDeVenta
 from ..hotel.models import Hotel
 from ..payTime.models import PayTime
 from ..payTime.serializers import PayTimeSerializer
-from .helpFunctions import buildEval, selection_sort
+from .helpFunctions import buildEval, buildListItemOrder
 
 
 @api_view(['GET'])
@@ -78,7 +78,8 @@ def getTableEvaluations(request):
             return Response([], status=status.HTTP_200_OK)
 
         # Build Response
-        listToReturn = []
+        listToReturn, listToOrder, index = [], [], 0
+
         for hotel in Hotel.objects.all():
             for worker in hotel.workers.filter(activo=True):
                 # BuildEvals
@@ -87,7 +88,7 @@ def getTableEvaluations(request):
                 thirdEval = buildEval(3, 2, paytimes, worker)
 
                 # Append new data to list to return
-                listToReturn.append({
+                newItem = {
                     # Worker Data
                     "name": worker.nombreCompleto(),
                     "hotel": hotel.name,
@@ -106,14 +107,27 @@ def getTableEvaluations(request):
                     "thirdEvalCalification": thirdEval['totalCalificacion'] if thirdEval is not None else None,
                     "thirdEvalTotal": thirdEval['totalPoints'] if thirdEval is not None else None,
                     "thirdcalificacion": thirdEval['calificacion'] if thirdEval is not None else "No Registrada",
-                })
+                }
+                listToReturn.append(newItem)
 
+                # Build new List item to Order
+                newTuple = []
+                buildListItemOrder(newItem, newTuple, "firstEvalTotal")
+                buildListItemOrder(newItem, newTuple, "secondEvalTotal")
+                buildListItemOrder(newItem, newTuple, "thirdEvalTotal")
+                newTuple.append(newItem['name'])
+                newTuple.append(newItem['hotel'])
+                newTuple.append(index)
+                index += 1
+
+                # Add new Item to order to order List
+                listToOrder.append(newTuple)
         # Sort Response
-        listToOrder = [i for i in listToReturn if i['firstEvalTotal'] is not None]
-        listNotOrder = [i for i in listToReturn if i['firstEvalTotal'] is None]
-        selection_sort(listToOrder)
-        # Return Response
-        listToReturn = listToOrder + listNotOrder
-        return Response(listToReturn, status=status.HTTP_200_OK)
+        listToOrder.sort()
+
+        # Build Again Response after list ordered
+        listResponse = [listToReturn[item[-1]] for item in listToOrder]
+
+        return Response(listResponse, status=status.HTTP_200_OK)
     except Exception as e:
         return Response({'detail': e.args[0]}, status=status.HTTP_400_BAD_REQUEST)
