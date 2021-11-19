@@ -22,13 +22,8 @@ def buildEval(length: int, index: int, paytimes: [], worker: Worker) -> MonthlyM
     return evaluation
 
 
-def selection_sort(collection):
-    length = len(collection)
-    for i in range(length - 1):
-        least = i
-        for k in range(i + 1, length):
-            if collection[k]['firstEvalTotal'] < collection[least]['firstEvalTotal']:
-                least = k
-        if least != i:
-            collection[least], collection[i] = (collection[i], collection[least])
-    
+def buildListItemOrder(newItem: {}, newTuple: [], key: str):
+    if newItem[key] is not None:
+        newTuple.append(newItem[key])
+    else:
+        newTuple.append(1000)
