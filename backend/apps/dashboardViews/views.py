@@ -11,7 +11,7 @@ from ..sellArea.models import PuntoDeVenta
 from ..hotel.models import Hotel
 from ..payTime.models import PayTime
 from ..payTime.serializers import PayTimeSerializer
-from .helpFunctions import buildEval, buildListItemOrder, getGastronomyEvaluationId
+from .helpFunctions import buildEval, buildListItemOrder, getGastronomyEvaluationId, getPayTimeId, getPayTimeName
 
 
 @api_view(['GET'])
@@ -113,16 +113,22 @@ def getTableEvaluations(request):
                     "workerId": worker.pk,
                     # First IDS
                     "firstEvalId": firstEval['id'] if firstEval is not None else None,
-                    "firstPayTimeId": firstEval['payTime'] if firstEval is not None else None,
+                    "firstPayTimeId": getPayTimeId(1, 0, paytimes),
+                    "firstPayTimeName": getPayTimeName(1, 0, paytimes),
                     "firstGastronomyId": getGastronomyEvaluationId(firstEval['payTime'] if firstEval is not None else None, worker.pk),
+                    "firstMeliaId": firstEval['id'] if firstEval is not None else None,
                     # Second IDS
                     "secondEvalId": secondEval['id'] if secondEval is not None else None,
-                    "secondPayTimeId": secondEval['payTime'] if secondEval is not None else None,
+                    "secondPayTimeId": getPayTimeId(2, 1, paytimes),
+                    "secondPayTimeName": getPayTimeName(2, 1, paytimes),
                     "secondGastronomyId": getGastronomyEvaluationId(secondEval['payTime'] if secondEval is not None else None, worker.pk),
+                    "secondMeliaId": secondEval['id'] if secondEval is not None else None,
                     # Third IDS
                     "thirdEvalId": thirdEval['id'] if thirdEval is not None else None,
-                    "thirdPayTimeId": thirdEval['payTime'] if thirdEval is not None else None,
+                    "thirdPayTimeId": getPayTimeId(3, 2, paytimes),
+                    "thirdPayTimeName": getPayTimeName(3, 2, paytimes),
                     "thirdGastronomyId": getGastronomyEvaluationId(thirdEval['payTime'] if thirdEval is not None else None, worker.pk),
+                    "thirdMeliaId": thirdEval['id'] if thirdEval is not None else None,
                 }
                 listToReturn.append(newItem)
 
@@ -142,7 +148,15 @@ def getTableEvaluations(request):
         listToOrder.sort()
 
         # Build Again Response after list ordered
-        listResponse = [listToReturn[item[-1]] for item in listToOrder]
+
+        listResponse = {
+            "payTimes": {
+                "first": getPayTimeName(1, 0, paytimes),
+                "second": getPayTimeName(2, 1, paytimes),
+                "third": getPayTimeName(3, 2, paytimes)
+            },
+            "data": [listToReturn[item[-1]] for item in listToOrder],
+        }
 
         return Response(listResponse, status=status.HTTP_200_OK)
     except Exception as e:
