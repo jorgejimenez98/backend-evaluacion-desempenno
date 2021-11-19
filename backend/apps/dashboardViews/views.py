@@ -160,5 +160,4 @@ def getTableEvaluations(request):
 
         return Response(listResponse, status=status.HTTP_200_OK)
     except Exception as e:
-        print(e)
         return Response({'detail': e.args[0]}, status=status.HTTP_400_BAD_REQUEST)
