@@ -11,7 +11,7 @@ from ..sellArea.models import PuntoDeVenta
 from ..hotel.models import Hotel
 from ..payTime.models import PayTime
 from ..payTime.serializers import PayTimeSerializer
-from .helpFunctions import buildEval
+from .helpFunctions import buildEval, selection_sort
 
 
 @api_view(['GET'])
@@ -95,16 +95,25 @@ def getTableEvaluations(request):
                     "firstEvalDate": firstEval['payTimeName'] if firstEval is not None else None,
                     "firstEvalCalification": firstEval['totalCalificacion'] if firstEval is not None else None,
                     "firstEvalTotal": firstEval['totalPoints'] if firstEval is not None else None,
+                    "firstcalificacion": firstEval['calificacion'] if firstEval is not None else "No Registrada",
                     # Second Eval
                     "secondEvalDate": secondEval['payTimeName'] if secondEval is not None else None,
                     "secondEvalCalification": secondEval['totalCalificacion'] if secondEval is not None else None,
                     "secondEvalTotal": secondEval['totalPoints'] if secondEval is not None else None,
+                    "secondcalificacion": secondEval['calificacion'] if secondEval is not None else "No Registrada",
                     # Second Eval
                     "thirdEvalDate": thirdEval['payTimeName'] if thirdEval is not None else None,
                     "thirdEvalCalification": thirdEval['totalCalificacion'] if thirdEval is not None else None,
                     "thirdEvalTotal": thirdEval['totalPoints'] if thirdEval is not None else None,
+                    "thirdcalificacion": thirdEval['calificacion'] if thirdEval is not None else "No Registrada",
                 })
+
+        # Sort Response
+        listToOrder = [i for i in listToReturn if i['firstEvalTotal'] is not None]
+        listNotOrder = [i for i in listToReturn if i['firstEvalTotal'] is None]
+        selection_sort(listToOrder)
         # Return Response
+        listToReturn = listToOrder + listNotOrder
         return Response(listToReturn, status=status.HTTP_200_OK)
     except Exception as e:
         return Response({'detail': e.args[0]}, status=status.HTTP_400_BAD_REQUEST)
