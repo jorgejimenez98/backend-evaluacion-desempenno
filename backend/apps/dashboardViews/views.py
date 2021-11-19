@@ -8,6 +8,10 @@ from ..evaluation.models import MonthlyMeliaEvaluation, AnualEvaluation
 from ..salesPlan.models import MonthlySalePlan
 from ..family.models import Family
 from ..sellArea.models import PuntoDeVenta
+from ..hotel.models import Hotel
+from ..payTime.models import PayTime
+from ..payTime.serializers import PayTimeSerializer
+from .helpFunctions import buildEval
 
 
 @api_view(['GET'])
@@ -65,7 +69,42 @@ def getRangeOfAnualEvaluations(request):
 @permission_classes([IsAuthenticated, IsFoodAndDrinkBoss])
 def getTableEvaluations(request):
     try:
-        message = "All is ok"
-        return Response(message, status=status.HTTP_200_OK)
+        # Get last 3 Paytimes
+        paytimes = list(PayTime.objects.filter(
+            isEliminated=False).order_by('-year', '-monthOrder')[0:3])
+
+        # Validate if There is Paytimes
+        if len(paytimes) == 0:
+            return Response([], status=status.HTTP_200_OK)
+
+        # Build Response
+        listToReturn = []
+        for hotel in Hotel.objects.all():
+            for worker in hotel.workers.filter(activo=True):
+                # BuildEvals
+                firstEval = buildEval(1, 0, paytimes, worker)
+                secondEval = buildEval(2, 1, paytimes, worker)
+                thirdEval = buildEval(3, 2, paytimes, worker)
+
+                # Append new data to list to return
+                listToReturn.append({
+                    # Worker Data
+                    "name": worker.nombreCompleto(),
+                    "hotel": hotel.name,
+                    # First Eval
+                    "firstEvalDate": firstEval['payTimeName'] if firstEval is not None else None,
+                    "firstEvalCalification": firstEval['totalCalificacion'] if firstEval is not None else None,
+                    "firstEvalTotal": firstEval['totalPoints'] if firstEval is not None else None,
+                    # Second Eval
+                    "secondEvalDate": secondEval['payTimeName'] if secondEval is not None else None,
+                    "secondEvalCalification": secondEval['totalCalificacion'] if secondEval is not None else None,
+                    "secondEvalTotal": secondEval['totalPoints'] if secondEval is not None else None,
+                    # Second Eval
+                    "thirdEvalDate": thirdEval['payTimeName'] if thirdEval is not None else None,
+                    "thirdEvalCalification": thirdEval['totalCalificacion'] if thirdEval is not None else None,
+                    "thirdEvalTotal": thirdEval['totalPoints'] if thirdEval is not None else None,
+                })
+        # Return Response
+        return Response(listToReturn, status=status.HTTP_200_OK)
     except Exception as e:
         return Response({'detail': e.args[0]}, status=status.HTTP_400_BAD_REQUEST)
