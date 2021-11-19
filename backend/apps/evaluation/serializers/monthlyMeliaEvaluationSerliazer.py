@@ -12,7 +12,11 @@ class MonthlyMeliaEvaluationMiniSerliazer(serializers.ModelSerializer):
             'payTimeName',
             'totalCalificacion',
             "totalPoints",
-            "calificacion"
+            "calificacion",
+
+            # Need ID
+            "id",
+            "payTime"
         ]
 
     def get_payTimeName(self, obj):
