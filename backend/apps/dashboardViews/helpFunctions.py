@@ -1,6 +1,6 @@
 from ..workers.models import Worker
 from ..payTime.models import PayTime
-from ..evaluation.models import MonthlyMeliaEvaluation
+from ..evaluation.models import MonthlyMeliaEvaluation, MonthlyGastronomyEvaluation
 from ..evaluation.serializers.monthlyMeliaEvaluationSerliazer import MonthlyMeliaEvaluationMiniSerliazer
 
 
@@ -11,6 +11,16 @@ def getMeliaEvaluation(pay_time: PayTime, worker: Worker):
                                                    evaluateWorker__no_interno=worker.no_interno)
         return MonthlyMeliaEvaluationMiniSerliazer(model, many=False).data
     return None
+
+
+def getGastronomyEvaluationId(pay_time, worker):
+    if pay_time is None or worker is None:
+        return None
+    else:
+        if MonthlyGastronomyEvaluation.objects.filter(payTime__id=pay_time, evaluateWorker__no_interno=worker).exists():
+            model = MonthlyGastronomyEvaluation.objects.get(payTime__id=pay_time, evaluateWorker__no_interno=worker)
+            return model.pk
+        return None
 
 
 def buildEval(length: int, index: int, paytimes: [], worker: Worker) -> MonthlyMeliaEvaluation or None:
