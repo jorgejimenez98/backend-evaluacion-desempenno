@@ -13,6 +13,7 @@ def getMeliaEvaluation(pay_time: PayTime, worker: Worker):
     return None
 
 
+
 def getGastronomyEvaluationId(pay_time, worker):
     if pay_time is None or worker is None:
         return None
@@ -30,6 +31,22 @@ def buildEval(length: int, index: int, paytimes: [], worker: Worker) -> MonthlyM
         paytime = paytimes[index]
         evaluation = getMeliaEvaluation(paytime, worker)
     return evaluation
+
+def getPayTimeId(length: int, index: int, paytimes: []) -> int or None:
+    # Build  Eval
+    ind = None
+    if len(paytimes) >= length:
+        paytime = paytimes[index]
+        ind = paytime.id
+    return ind
+
+def getPayTimeName(length: int, index: int, paytimes: []) -> str or None:
+    # Build  Eval
+    ind = None
+    if len(paytimes) >= length:
+        paytime = paytimes[index]
+        ind = f'{paytime.month} - {paytime.year}'.title()
+    return ind
 
 
 def buildListItemOrder(newItem: {}, newTuple: [], key: str):
