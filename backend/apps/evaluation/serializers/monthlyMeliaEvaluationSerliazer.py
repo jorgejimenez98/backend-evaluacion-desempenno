@@ -4,17 +4,34 @@ from ..models import MonthlyMeliaEvaluation
 
 class MonthlyMeliaEvaluationMiniSerliazer(serializers.ModelSerializer):
     payTimeName = serializers.SerializerMethodField(read_only=True)
+    calificacion = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = MonthlyMeliaEvaluation
         fields = [
             'payTimeName',
             'totalCalificacion',
-            "totalPoints"
+            "totalPoints",
+            "calificacion"
         ]
 
     def get_payTimeName(self, obj):
         return str(obj.payTime)
+
+    def get_calificacion(self, obj):
+        try:
+            aux = obj.totalCalificacion()
+            cal = aux.split(' - ')[1]
+            if cal == 'M':
+                return 'Mal'
+            elif cal == 'R':
+                return "Regular"
+            elif cal == 'B':
+                return 'Bien'
+            else:
+                return "Muy bien"
+        except IndexError:
+            return 'Error en calificacion'
 
 
 class MonthlyMeliaEvaluationSerliazer(serializers.ModelSerializer):
