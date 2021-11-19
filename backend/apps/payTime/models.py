@@ -11,4 +11,4 @@ class PayTime(models.Model):
     isEliminated = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'Periodo de Pago {self.month} {self.year}'
+        return f'{self.month} - {self.year}'
