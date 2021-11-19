@@ -2,6 +2,21 @@ from rest_framework import serializers
 from ..models import MonthlyMeliaEvaluation
 
 
+class MonthlyMeliaEvaluationMiniSerliazer(serializers.ModelSerializer):
+    payTimeName = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model = MonthlyMeliaEvaluation
+        fields = [
+            'payTimeName',
+            'totalCalificacion',
+            "totalPoints"
+        ]
+
+    def get_payTimeName(self, obj):
+        return str(obj.payTime)
+
+
 class MonthlyMeliaEvaluationSerliazer(serializers.ModelSerializer):
     class Meta:
         model = MonthlyMeliaEvaluation
