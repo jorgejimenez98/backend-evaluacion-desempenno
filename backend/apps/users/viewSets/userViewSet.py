@@ -1,17 +1,18 @@
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import Permission
 from django.db import IntegrityError
+from django.contrib.auth import get_user_model
 from rest_framework import viewsets, status
 from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from backend import utils
-from ..serializers.userSerializer import UserSerializer, UserMiniSerializer, User, UserSerializerWithToken
+from ..serializers.userSerializer import UserSerializer, UserMiniSerializer, UserSerializerWithToken
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all().order_by('pk')
+    queryset = get_user_model().objects.all().order_by('pk')
     serializer_class = UserMiniSerializer
     permission_classes = [IsAuthenticated, IsAdminUser]
 
@@ -22,7 +23,7 @@ class UserViewSet(viewsets.ModelViewSet):
     def deleteUsers(self, request):
         try:
             for user in request.data:
-                User.objects.get(pk=user.get('id')).delete()
+                get_user_model().objects.get(pk=user.get('id')).delete()
             return Response({'Users Eliminated Successfully'}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({'detail': e.args[0]}, status=status.HTTP_400_BAD_REQUEST)
@@ -30,7 +31,7 @@ class UserViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['PUT'])
     def changePassword(self, request, pk=None):
         try:
-            user = User.objects.get(pk=pk)
+            user = get_user_model().objects.get(pk=pk)
             user.password = make_password(request.data.get('password'))
             user.save()
             return Response({'Password Changed Successfully'}, status=status.HTTP_200_OK)
@@ -40,43 +41,43 @@ class UserViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         data = request.data
         try:
-            user = User.objects.create(
+            get_user_model().objects.create_user(
                 username=data.get('username'),
                 first_name=data.get('first_name'),
                 last_name=data.get('last_name'),
                 email=data.get('email'),
                 is_staff=data.get('isAdmin'),
-                password=make_password(data.get('password'))
+                password=make_password(data.get('password')),
+                isFoodAndDrinkBoss=data.get('isFoodAndDrinkBoss'),
             )
-            if data.get('isFoodAndDrinkBoss'):
-                permission = Permission.objects.get(codename='isFoodAndDrinkBoss')
-                user.user_permissions.add(permission)
-            user.save()
             return Response({'Users Created Successfully'}, status=status.HTTP_200_OK)
         except IntegrityError:
-            message = 'Ya existe un usuario con el nombre de usuario {}'.format(data['username'])
+            message = 'Ya existe un usuario con el nombre de usuario {}'.format(
+                data['username'])
             return Response({'detail': message}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({'detail': e.args[0]}, status=status.HTTP_400_BAD_REQUEST)
 
     def update(self, request, *args, **kwargs):
+        """ Get data from frontend """
         data = request.data
-        user = User.objects.get(pk=self.get_object().pk)
         try:
-            if user.is_staff and not data.get('isAdmin') and User.objects.filter(is_staff=True).count() == 1:
+            user = self.get_object()
+            """ Validate only an Admin user """
+            onlyOneAdmin = get_user_model().objects.filter(is_staff=True).count() == 1
+            if user.is_staff and not data.get('isAdmin') and onlyOneAdmin:
                 raise Exception(utils.getNoAdminDeleteMessage(user.username))
+
+            """ Edit User Fields """            
             user.username = data.get('username')
             user.first_name = data.get('first_name')
             user.last_name = data.get('last_name')
             user.email = data.get('email')
             user.is_staff = data.get('isAdmin')
-            permission = Permission.objects.get(codename='isFoodAndDrinkBoss')
-            if not user.user_permissions.filter(codename='isFoodAndDrinkBoss').exists():
-                if data.get('isFoodAndDrinkBoss'):
-                    user.user_permissions.add(permission)
-            elif not data.get('isFoodAndDrinkBoss'):
-                user.user_permissions.remove(permission)
+            user.isFoodAndDrinkBoss=data.get('isFoodAndDrinkBoss')
             user.save()
+
+            """ Return Response """
             return Response({'Users Edited Successfully'}, status=status.HTTP_200_OK)
         except IntegrityError:
             message = 'Ya existe un usuario con el nombre de usuario {}'.format(data['username'])
