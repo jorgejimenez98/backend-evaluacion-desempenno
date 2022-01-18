@@ -7,4 +7,4 @@ class IsFoodAndDrinkBoss(BasePermission):
     """
 
     def has_permission(self, request, view):
-        return bool(request.user and request.user.user_permissions.filter(codename='isFoodAndDrinkBoss').exists())
+        return bool(request.user and request.user.isFoodAndDrinkBoss)
