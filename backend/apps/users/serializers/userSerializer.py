@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import serializers
 
@@ -11,7 +11,7 @@ class UserMiniSerializer(serializers.ModelSerializer):
     rol = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ['id', 'username', 'name', 'email', 'rol', 'isAdmin', 'isFoodAndDrinkBoss']
         extra_kwargs = {'password': {'write_only': True, 'required': True}}
 
@@ -25,7 +25,7 @@ class UserMiniSerializer(serializers.ModelSerializer):
         return obj.email if obj.email != '' else 'No registrado'
 
     def get_isFoodAndDrinkBoss(self, obj):
-        return obj.user_permissions.filter(codename='isFoodAndDrinkBoss').exists()
+        return obj.isFoodAndDrinkBoss
 
     def get_rol(self, obj):
         if self.get_isAdmin(obj):
@@ -39,7 +39,7 @@ class UserSerializer(UserMiniSerializer):
     permissions = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ['id', 'username', 'first_name', 'last_name', 'email', 'rol', 'isAdmin', 'isFoodAndDrinkBoss',
                   'date_joined', 'last_login', 'permissions']
 
@@ -52,7 +52,7 @@ class UserSerializerWithToken(UserSerializer):
     token = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ['id', 'username', 'email', 'name', 'isAdmin', 'isFoodAndDrinkBoss', 'rol', 'token']
 
     def get_token(self, obj):

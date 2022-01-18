@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -19,7 +19,7 @@ from .helpFunctions import buildEval, buildListItemOrder, getGastronomyEvaluatio
 def getMainNumbers(request):
     try:
         response = {
-            'users': User.objects.all().count(),
+            'users': get_user_model().objects.all().count(),
             'salePlans': MonthlySalePlan.objects.all().count(),
             'families': Family.objects.filter(activo=True).count(),
             'salePlaces': PuntoDeVenta.objects.filter(activo=True).count(),
